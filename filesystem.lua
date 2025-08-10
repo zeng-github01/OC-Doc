@@ -135,7 +135,7 @@ function filesystem.copy(fromPath, toPath) end
 
 --- Opens a file for reading or writing. Returns a file stream.
 ---@param path string File path
----@param mode string? Open mode ("r", "w", etc.)
+---@param mode string? Open mode, follows the same format as the C function fopen
 ---@return table|nil File stream or nil
 ---@return string? Error message
 function filesystem.open(path, mode) end
