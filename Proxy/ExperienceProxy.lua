@@ -1,0 +1,3 @@
+---@meta
+---@class ExperienceProxy
+---@field level fun(): integer

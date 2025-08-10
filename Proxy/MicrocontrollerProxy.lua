@@ -1,0 +1,8 @@
+---@meta
+---@class MicrocontrollerProxy
+---@field setSideOpen fun(side: integer, open: boolean): boolean
+---@field start fun(): boolean
+---@field stop fun(): boolean
+---@field isRunning fun(): boolean
+---@field isSideOpen fun(side: integer): boolean
+---@field lastError fun(): string?
