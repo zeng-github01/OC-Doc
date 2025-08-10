@@ -34,58 +34,74 @@
 ---@field tunnel TunnelProxy
 local component = {}
 
----@param address string
----@param method string
----@return string
+--- Returns the documentation string for the specified method of the component at the given address.
+---@param address string Component address
+---@param method string Method name
+---@return string "Documentation string"
 function component.doc(address, method) end
 
----@param address string
----@param method string
----@param ... any
----@return any
+--- Calls the specified method on the component at the given address, passing any additional arguments.
+---@param address string Component address
+---@param method string Method name
+---@param ... any Arguments to pass to the method
+---@return any Results returned by the method
 function component.invoke(address, method, ...) end
 
----@param filter? string
----@param exact? boolean
----@return fun(): (string, string)  -- address, type
+--- Returns an iterator over all components attached to the computer.
+--- If filter is set, only components whose type contains the filter string are returned.
+--- If exact is true, only exact matches are returned.
+---@param filter? string Filter string (optional)
+---@param exact? boolean Exact match (optional)
+---@return fun(): (string, string) "Iterator yielding address and type"
 function component.list(filter, exact) end
 
----@param address string
----@return table<string, boolean>  -- methodName -> isDirect
+--- Returns a table of all method names provided by the component at the given address.
+--- The table keys are method names, values indicate if the method is called directly.
+---@param address string Component address
+---@return table<string, boolean> Table of method names to direct-call flags
 function component.methods(address) end
 
----@param address string
----@return table
+--- Gets a proxy object for the component at the given address, providing all its methods as fields.
+---@param address string Component address
+---@return table Proxy object for the component
 function component.proxy(address) end
 
----@param address string
----@return string
+--- Gets the component type of the component at the given address.
+---@param address string Component address
+---@return string "Component type"
 function component.type(address) end
 
----@param address string
----@return integer
+--- Returns the slot number where the component is installed, or -1 if not applicable.
+---@param address string Component address
+---@return integer Slot number or -1
 function component.slot(address) end
 
----@param address string
----@return string
-function component.fields(address) end  -- 未记录，保留占位
+--- (Undocumented) Returns fields for the component at the given address.
+---@param address string Component address
+---@return string Fields (undocumented)
+function component.fields(address) end  -- undocumented
 
----@param address string
----@param componentType? string
----@return string | nil, string?  -- full address or nil + error
+--- Tries to resolve an abbreviated address to a full address, optionally filtering by component type.
+---@param address string Abbreviated or full address
+---@param componentType? string Component type to filter (optional)
+---@return string|nil Full address or nil
+---@return string? "Error message if not found"
 function component.get(address, componentType) end
 
----@param componentType string
----@return boolean
+--- Checks if there is a primary component of the specified type.
+---@param componentType string Component type
+---@return boolean `True` if available
 function component.isAvailable(componentType) end
 
----@param componentType string
----@diagnostic disable-next-line: undefined-doc-name
----@return ComponentProxy
+--- Gets the proxy for the primary component of the specified type.
+--- Throws an error if there is no primary component of that type.
+---@param componentType string Component type
+---@return table "Proxy object for the primary component"
 function component.getPrimary(componentType) end
 
----@param componentType string
----@param address string
+--- Sets a new primary component for the specified type. Triggers signals if changed.
+---@param componentType string Component type
+---@param address string Component address (can be abbreviated)
 function component.setPrimary(componentType, address) end
 
 return component
