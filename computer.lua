@@ -14,7 +14,7 @@ function computer.address() end
 ---@return string Temporary filesystem address
 function computer.tmpAddress() end
 
---- Returns the amount of free memory in bytes.
+--- Returns the amount of free memory in bytes. If too low, means the computer may crash due to having not enough memory.
 ---@return number Free memory (bytes)
 function computer.freeMemory() end
 
@@ -46,7 +46,7 @@ function computer.getBootAddress() end
 ---@param address string? Filesystem address (nil to clear)
 function computer.setBootAddress(address) end
 
---- Returns the current runlevel ("S", "1", etc).
+--- Returns the current runlevel ("S" for single user mode while booting, "1" for single user mode after boot).
 ---@return string|number Runlevel
 function computer.runlevel() end
 
@@ -66,11 +66,13 @@ function computer.addUser(name) end
 function computer.removeUser(name) end
 
 --- Pushes a new signal into the event queue.
+--- Using the computer library for events is not recommended, use the event library instead.
 ---@param name string Signal name
 ---@param ... any Signal arguments
 function computer.pushSignal(name, ...) end
 
 --- Pulls a signal from the event queue, waiting up to timeout seconds.
+--- Using the computer library for events is not recommended, use the event library instead.
 ---@param timeout number? Maximum time to wait (optional)
 ---@return string|nil Signal name, or nil if timed out
 ---@return ... Signal arguments
