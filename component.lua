@@ -63,7 +63,7 @@ function component.methods(address) end
 
 --- Gets a proxy object for the component at the given address, providing all its methods as fields.
 ---@param address string Component address
----@return table Proxy object for the component
+---@return table "Proxy object for the component"
 function component.proxy(address) end
 
 --- Gets the component type of the component at the given address.
