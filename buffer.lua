@@ -9,7 +9,7 @@ local buffer = {}
 --- Creates a new buffered stream wrapping the given stream.
 ---@param mode string? Buffer mode: "r", "w", or "rw" (optional)
 ---@param stream table Stream object to wrap
----@return BufferedStream Buffered stream instance
+---@return BufferedStream "Buffered stream instance"
 function buffer.new(mode, stream) end
 
 --- Instance methods for buffered streams (returned by buffer.new or io.open):
