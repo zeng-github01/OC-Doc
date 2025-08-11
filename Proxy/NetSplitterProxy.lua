@@ -1,6 +1,6 @@
 ---@meta
 
---- Proxy interface for the Net Splitter component.
+--- Proxy interface for the Net Splitter component (`net_splitter`)
 --- 
 --- The net splitter connects networks like a cable, but with controllable faces.
 --- Each face can be opened or closed to segment the network.

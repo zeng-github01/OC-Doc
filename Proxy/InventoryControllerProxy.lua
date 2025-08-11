@@ -36,7 +36,7 @@ function InventoryControllerProxy.getStackInInternalSlot(slot) end
 ---@param side integer Side to drop into (see Sides API)
 ---@param slot integer Slot number to drop into
 ---@param count integer? Number of items to drop (optional)
----@return boolean success True if at least one item was moved
+---@return boolean success `true` if at least one item was moved
 ---@return string? error Error message if failed
 function InventoryControllerProxy.dropIntoSlot(side, slot, count) end
 

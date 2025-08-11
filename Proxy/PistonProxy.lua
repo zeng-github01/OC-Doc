@@ -1,6 +1,6 @@
 ---@meta
 
---- Proxy interface for the Piston Upgrade component.
+--- Proxy interface for the Piston Upgrade component (`piston`)
 ---
 --- This component allows pushing blocks in front of the container it's installed in.
 --- It behaves like a basic piston, triggered via API.
