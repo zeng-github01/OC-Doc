@@ -6,7 +6,7 @@
 ---@field maxDamage number Maximum damage before the item breaks
 ---@field size number Current stack size
 ---@field maxSize number Maximum stack size
----@field id string Minecraft item id (optional)
+---@field id number? Minecraft item id (optional)
 ---@field name string Untranslated item name (e.g. "oc:item.FloppyDisk")
 ---@field label string Translated item name
 ---@field hasTag boolean Whether the item has an NBT tag
