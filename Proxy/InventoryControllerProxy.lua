@@ -1,78 +1,95 @@
 ---@meta
----@class ItemStack
----@field damage number # the current damage value of the item
----@field maxDamage number # the maximum damage this item can have before it breaks
----@field size number # the current stack size of the item
----@field maxSize number # the maximum stack size of this item
----@field id number # the Minecraft id of the item (可选)
----@field name string # the untranslated item name
----@field label string # the translated item name
----@field hasTag boolean # whether or not the item has an NBT tag
 
+--- Represents an item stack in an inventory.
+---@class ItemStack
+---@field damage number Current damage value of the item
+---@field maxDamage number Maximum damage before the item breaks
+---@field size number Current stack size
+---@field maxSize number Maximum stack size
+---@field id string Minecraft item id (optional)
+---@field name string Untranslated item name (e.g. "oc:item.FloppyDisk")
+---@field label string Translated item name
+---@field hasTag boolean Whether the item has an NBT tag
+
+--- Proxy for the OpenComputers Inventory Controller component.
 ---@class InventoryControllerProxy
 local InventoryControllerProxy = {}
 
----@param side integer
----@return integer | nil, string?
+--- Returns the size of the inventory at the specified side.
+---@param side integer Side to check (see Sides API)
+---@return number|nil size Size of the inventory, or nil if not found
+---@return string? error Error message if failed
 function InventoryControllerProxy.getInventorySize(side) end
 
----@param side integer
----@param slot integer
----@return ItemStack | nil
+--- Returns the item stack in the specified slot of the inventory at the given side.
+---@param side integer Side to check (see Sides API)
+---@param slot integer Slot number
+---@return ItemStack|nil item Item stack info, or nil if empty
 function InventoryControllerProxy.getStackInSlot(side, slot) end
 
----@param slot integer
----@return ItemStack | nil
+--- Returns the item stack in the specified or selected slot of the robot's own inventory.
+---@param slot integer Slot number
+---@return ItemStack|nil item Item stack info, or nil if empty
 function InventoryControllerProxy.getStackInInternalSlot(slot) end
 
----@param side integer
----@param slot integer
----@param count integer?
----@return boolean, string?
+--- Drops up to count items from the selected slot into the specified slot of the inventory at the given side.
+---@param side integer Side to drop into (see Sides API)
+---@param slot integer Slot number to drop into
+---@param count integer? Number of items to drop (optional)
+---@return boolean success True if at least one item was moved
+---@return string? error Error message if failed
 function InventoryControllerProxy.dropIntoSlot(side, slot, count) end
 
----@param side integer
----@param slot integer
----@param count integer?
----@return boolean
+--- Takes up to count items from the specified slot of the inventory at the given side and puts them into the selected slot.
+---@param side integer Side to take from (see Sides API)
+---@param slot integer Slot number to take from
+---@param count integer? Number of items to take (optional)
+---@return boolean success True if at least one item was moved
 function InventoryControllerProxy.suckFromSlot(side, slot, count) end
 
----@return boolean
+--- Swaps the content of the robot's tool slot with the selected inventory slot.
+---@return boolean success True if items were swapped
 function InventoryControllerProxy.equip() end
 
----@param side integer
----@param slot integer
----@param dbAddress string
----@param dbSlot integer
----@return boolean
+--- Stores the item stack description from the specified slot in an inventory into a database slot.
+---@param side integer Side of the inventory (see Sides API)
+---@param slot integer Slot number
+---@param dbAddress string Database component address
+---@param dbSlot integer Database slot number
+---@return boolean success True if stored
 function InventoryControllerProxy.store(side, slot, dbAddress, dbSlot) end
 
----@param slot integer
----@param dbAddress string
----@param dbSlot integer
----@return boolean
+--- Stores the item stack description from the specified robot inventory slot into a database slot.
+---@param slot integer Robot inventory slot
+---@param dbAddress string Database component address
+---@param dbSlot integer Database slot number
+---@return boolean success True if stored
 function InventoryControllerProxy.storeInternal(slot, dbAddress, dbSlot) end
 
----@param slot integer
----@param dbAddress string
----@param dbSlot integer
----@return boolean
+--- Compares the item stack in the specified slot with one in a database slot.
+---@param slot integer Robot inventory slot
+---@param dbAddress string Database component address
+---@param dbSlot integer Database slot number
+---@return boolean match True if items match
 function InventoryControllerProxy.compareToDatabase(slot, dbAddress, dbSlot) end
 
----@param side integer
----@param slotA integer
----@param slotB integer
----@return boolean
+--- Compares item stacks in two slots of an inventory on the specified side.
+---@param side integer Side of the inventory (see Sides API)
+---@param slotA integer First slot number
+---@param slotB integer Second slot number
+---@return boolean match True if stacks are identical
 function InventoryControllerProxy.compareStacks(side, slotA, slotB) end
 
----@param side integer
----@param slot integer
----@return integer
+--- Gets the maximum number of items in the specified slot of an inventory on the given side.
+---@param side integer Side of the inventory (see Sides API)
+---@param slot integer Slot number
+---@return integer maxSize Maximum stack size for the slot
 function InventoryControllerProxy.getSlotMaxStackSize(side, slot) end
 
----@param side integer
----@param slot integer
----@return integer
+--- Gets the number of items in the specified slot of an inventory on the given side.
+---@param side integer Side of the inventory (see Sides API)
+---@param slot integer Slot number
+---@return integer size Number of items in the slot
 function InventoryControllerProxy.getSlotStackSize(side, slot) end
 
 return InventoryControllerProxy
