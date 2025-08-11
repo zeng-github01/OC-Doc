@@ -11,17 +11,17 @@ local robot = {}
 function robot.name() end
 
 --- Detects if there is a block or entity in front of the robot.
----@return boolean True if blocked
+---@return boolean True if something is in front of the robot.
 ---@return string Type description (entity/solid/replaceable/liquid/passable/air)
 function robot.detect() end
 
 --- Detects if there is a block or entity above the robot.
----@return boolean True if blocked
+---@return boolean True if something is above the robot
 ---@return string Type description
 function robot.detectUp() end
 
 --- Detects if there is a block or entity below the robot.
----@return boolean True if blocked
+---@return boolean True if something is below the robot
 ---@return string Type description
 function robot.detectDown() end
 

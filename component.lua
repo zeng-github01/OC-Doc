@@ -37,7 +37,7 @@ local component = {}
 --- Returns the documentation string for the specified method of the component at the given address.
 ---@param address string Component address
 ---@param method string Method name
----@return string "Documentation string"
+---@return string Documentation string
 function component.doc(address, method) end
 
 --- Calls the specified method on the component at the given address, passing any additional arguments.
@@ -52,7 +52,7 @@ function component.invoke(address, method, ...) end
 --- If exact is true, only exact matches are returned.
 ---@param filter? string Filter string (optional)
 ---@param exact? boolean Exact match (optional)
----@return fun(): (string, string) "Iterator yielding address and type"
+---@return fun(): (string, string) Iterator yielding address and type
 function component.list(filter, exact) end
 
 --- Returns a table of all method names provided by the component at the given address.
@@ -63,12 +63,12 @@ function component.methods(address) end
 
 --- Gets a proxy object for the component at the given address, providing all its methods as fields.
 ---@param address string Component address
----@return table "Proxy object for the component"
+---@return table Proxy object for the component
 function component.proxy(address) end
 
 --- Gets the component type of the component at the given address.
 ---@param address string Component address
----@return string "Component type"
+---@return string Component type
 function component.type(address) end
 
 --- Returns the slot number where the component is installed, or -1 if not applicable.
@@ -85,7 +85,7 @@ function component.fields(address) end  -- undocumented
 ---@param address string Abbreviated or full address
 ---@param componentType? string Component type to filter (optional)
 ---@return string|nil Full address or nil
----@return string? "Error message if not found"
+---@return string? Error message if any error occurs
 function component.get(address, componentType) end
 
 --- Checks if there is a primary component of the specified type.
@@ -96,7 +96,7 @@ function component.isAvailable(componentType) end
 --- Gets the proxy for the primary component of the specified type.
 --- Throws an error if there is no primary component of that type.
 ---@param componentType string Component type
----@return table "Proxy object for the primary component"
+---@return table Proxy object for the primary component
 function component.getPrimary(componentType) end
 
 --- Sets a new primary component for the specified type. Triggers signals if changed.
